@@ -1,3 +1,5 @@
+"use client"
+
 import { AuthUser } from "aws-amplify/auth";
 import React, { useEffect, useState } from "react";
 import { generateClient } from "aws-amplify/data";
@@ -5,12 +7,11 @@ import type { Schema } from "@/amplify/data/resource";
 
 export interface TodosProps {
   user: AuthUser;
-  signOut?: (data?: any) => void;
 }
 
-export const Todos = ({ user, signOut }: TodosProps) => {
+export const Todos = ({ user }: TodosProps) => {
   const client = generateClient<Schema>();
-  
+
   const [todos, setTodos] = useState<Array<Schema["Todo"]["type"]>>([]);
 
   function listTodos() {
@@ -46,7 +47,7 @@ export const Todos = ({ user, signOut }: TodosProps) => {
           </li>
         ))}
       </ul>
-      <button onClick={signOut}>Sign Out</button>
+      
       <div>
         🥳 App successfully hosted. Try creating a new todo.
         <br />
