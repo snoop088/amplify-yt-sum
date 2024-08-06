@@ -63,3 +63,6 @@ body {
     font-weight: 800;
     text-decoration: none;
   }
+  .disableSignup {
+    margin: 0 2rem;
+  }
