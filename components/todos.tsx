@@ -1,5 +1,3 @@
-"use client"
-
 import { AuthUser } from "aws-amplify/auth";
 import React, { useEffect, useState } from "react";
 import { generateClient } from "aws-amplify/data";
@@ -32,7 +30,6 @@ export const Todos = ({ user }: TodosProps) => {
 
   function deleteTodo(id: string) {
     client.models.Todo.delete({ id });
-    console.log("deleting", id);
   }
 
   return (
@@ -50,10 +47,6 @@ export const Todos = ({ user }: TodosProps) => {
       
       <div>
         🥳 App successfully hosted. Try creating a new todo.
-        <br />
-        <a href="https://docs.amplify.aws/nextjs/start/quickstart/nextjs-app-router-client-components/">
-          Review next steps of this tutorial.
-        </a>
       </div>
     </main>
   );

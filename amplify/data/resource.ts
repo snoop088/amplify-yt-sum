@@ -11,11 +11,18 @@ const schema = a.schema({
     .model({
       content: a.string(),
     })
-    .authorization(allow => [allow.owner()])
+    .authorization((allow) => [allow.owner()]),
+  News: a
+    .model({
+      content: a.string(),
+      title: a.string(),
+      dateCreated: a.date(),
+      author: a.string(),
+    })
+    .authorization((allow) => [allow.authenticated().to(["read"])]),
 });
 
 export type Schema = ClientSchema<typeof schema>;
-
 
 export const data = defineData({
   schema,
