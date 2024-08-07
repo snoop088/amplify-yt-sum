@@ -1,10 +1,5 @@
-"use client";
-import { useAuthenticator } from "@aws-amplify/ui-react";
-
 import "@aws-amplify/ui-react/styles.css";
-import "./app.css";
 import { Todos } from "@/components/todos";
-
 
 export default function App() {
   const components = {
@@ -20,17 +15,10 @@ export default function App() {
       ),
     },
   };
-  const { user, signOut } = useAuthenticator((context) => [
-    context.user,
-  ]);
+
   return (
     <div>
-      <div>
-        <Todos user={user} />
-      </div>
-      <div>
-        <button onClick={signOut}>Sign Out</button>
-      </div>
+      <Todos />
     </div>
   );
 }

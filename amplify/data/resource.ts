@@ -16,10 +16,9 @@ const schema = a.schema({
     .model({
       content: a.string(),
       title: a.string(),
-      dateCreated: a.date(),
       author: a.string(),
     })
-    .authorization((allow) => [allow.authenticated().to(["read"])]),
+    .authorization((allow) => [allow.owner(), allow.authenticated().to(["read"])]),
 });
 
 export type Schema = ClientSchema<typeof schema>;

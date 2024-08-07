@@ -1,13 +1,16 @@
+"use client";
 import { AuthUser } from "aws-amplify/auth";
 import React, { useEffect, useState } from "react";
 import { generateClient } from "aws-amplify/data";
 import type { Schema } from "@/amplify/data/resource";
+import { useAuthenticator } from "@aws-amplify/ui-react";
 
 export interface TodosProps {
   user: AuthUser;
 }
 
-export const Todos = ({ user }: TodosProps) => {
+export const Todos = () => {
+  const { user } = useAuthenticator((context) => [context.user]);
   const client = generateClient<Schema>();
 
   const [todos, setTodos] = useState<Array<Schema["Todo"]["type"]>>([]);
@@ -44,10 +47,8 @@ export const Todos = ({ user }: TodosProps) => {
           </li>
         ))}
       </ul>
-      
-      <div>
-        🥳 App successfully hosted. Try creating a new todo.
-      </div>
+
+      <div>🥳 App successfully hosted. Try creating a new todo.</div>
     </main>
   );
 };
