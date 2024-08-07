@@ -1,6 +1,6 @@
 import styles from './page.module.css'
 
-export const NewsList = () => {
+const NewsList = () => {
   return (
     <div className={styles.container}>
       <div>1</div>
