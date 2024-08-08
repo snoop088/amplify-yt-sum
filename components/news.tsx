@@ -26,6 +26,10 @@ export const News = () => {
             Author: {n.author} Created: {n.createdAt}
           </i>
           <p>{n.content}</p>
+          <button onClick={async (e) => {
+            const r = await client.queries.invokeApi({name: 'whaat'});
+            console.log(r)
+          }}>check me</button>
         </article>
       ))}
     </div>
