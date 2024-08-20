@@ -1,6 +1,4 @@
-import "@aws-amplify/ui-react/styles.css";
 import { Todos } from "@/components/todos";
-
 export default function App() {
   const components = {
     SignUp: {
@@ -17,8 +15,8 @@ export default function App() {
   };
 
   return (
-    <div>
+    <section>
       <Todos />
-    </div>
+    </section>
   );
 }

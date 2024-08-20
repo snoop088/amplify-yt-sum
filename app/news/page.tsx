@@ -13,6 +13,7 @@ const NewsPage = () => {
   const client = generateClient<Schema>();
 
   const [newsItem, setNewsItem] = useState<Partial<NewsItem>>();
+  const [ytUrl, setYtUrl] = useState('')
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     createNews();
@@ -80,6 +81,23 @@ const NewsPage = () => {
             Reset
           </button>
         </form>
+      </div>
+      <div className={styles.summarise}>
+        <div className="input-field">
+          <label>Enter Youtube Url</label>
+          <input
+              required
+              type="text"
+              name="yt_url"
+              value={ytUrl}
+              onChange={(e) => setYtUrl(e.target.value)
+                
+              }
+            /></div>
+        <div><button onClick={async (e) => {
+            const r = await client.queries.invokeApi({url: ytUrl});
+            console.log(r)
+          }}>Get a Summary</button></div>
       </div>
     </section>
   );

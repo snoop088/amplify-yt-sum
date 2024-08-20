@@ -22,7 +22,7 @@ const schema = a.schema({
     .authorization((allow) => [allow.owner(), allow.authenticated().to(["read"])]),
   invokeApi: a
     .query()
-    .arguments({name: a.string()})
+    .arguments({url: a.string()})
     .returns(a.string())
     .handler(a.handler.function(invokeApi))
     .authorization((allow) => [allow.authenticated()]),

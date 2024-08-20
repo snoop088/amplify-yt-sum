@@ -9,9 +9,11 @@ export const News = () => {
   const listNews = () => {
     client.models.News.observeQuery().subscribe({
       next: (data) => {
+        console.log(data.items);
         setNews([...data.items]);
       },
     });
+    
   };
   const [news, setNews] = useState<Array<Schema["News"]["type"]>>([]);
   useEffect(() => {
@@ -23,13 +25,9 @@ export const News = () => {
         <article key={n.id}>
           <h5>{n.title}</h5>
           <i>
-            Author: {n.author} Created: {n.createdAt}
+            Author: {n.author} Created: {new Date(n.createdAt).toDateString()}
           </i>
           <p>{n.content}</p>
-          <button onClick={async (e) => {
-            const r = await client.queries.invokeApi({name: 'whaat'});
-            console.log(r)
-          }}>check me</button>
         </article>
       ))}
     </div>
