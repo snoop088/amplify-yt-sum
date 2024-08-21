@@ -21,7 +21,7 @@ const backend = defineBackend({
 
   // Add other resources here, such as functions or containers
 });
-console.log(invokeFunction)
+
 const inkoveLambdaDef = backend.invokeApi.resources.lambda
 
 inkoveLambdaDef.addToRolePolicy(new PolicyStatement(

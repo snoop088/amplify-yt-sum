@@ -11,6 +11,6 @@ export const invokeApi = defineFunction({
   // optionally specify environment variables (defaults to {})
   timeoutSeconds: 30,
   environment: {
-    FUNC_NAME: process.env.INVOKE_FUNCTION?.split(':')[1] ?? '',
+    FUNC_NAME: process.env.INVOKE_FUNCTION?.split(':').at(-1) ?? '',
   },
 });
